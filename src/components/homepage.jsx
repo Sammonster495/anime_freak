@@ -34,6 +34,8 @@ export default function HomePage() {
     <div>
       <Background />
       {displayGenres}
+
+      {/* Displaying the database items */}
       <div>
         {fetchError && <p>{fetchError}</p>}
         {animes && animes.length > 0 ? (
