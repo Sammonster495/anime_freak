@@ -10,7 +10,6 @@ export default function Genre(props){
             try{
                 const response = await axios.get(`http://localhost:5000/home?genre=${props.genre}`)
                 setAnimes(response.data)
-                console.log(response.data)
             }catch(error){
                 console.log(error)
             }
