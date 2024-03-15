@@ -10,7 +10,6 @@ export default function Genre(props){
             try{
                 const response = await axios.get(`${process.env.REACT_APP_BACKEND}/home?genre=${props.genre}`)
                 setAnimes(response.data)
-                console.log(response);
             }catch(error){
                 console.log(error)
             }
