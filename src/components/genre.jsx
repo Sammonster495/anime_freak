@@ -3,7 +3,7 @@ import Card from "./card"
 import { useEffect, useState } from "react"
 
 export default function Genre(props){
-    const [animes, setAnimes] = useState([])
+    const [animes, setAnimes] = useState(null)
 
     useEffect(() => {
         const fetchAnime = async () => {
