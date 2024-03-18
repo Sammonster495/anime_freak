@@ -34,6 +34,7 @@ export default function HomePage() {
     <div>
       <Background />
       {displayGenres}
+      {/*
       <p className="text-center text-white text-5xl font-bold font-anta uppercase">Top animes</p>
       <div>
         {fetchError && <p>{fetchError}</p>}
@@ -50,7 +51,7 @@ export default function HomePage() {
         ) : (
           <p>No users found!</p>
         )}
-        </div>
-        </div>
+        </div>*/}
+    </div>
   );
 }
