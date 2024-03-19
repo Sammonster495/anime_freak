@@ -1,7 +1,5 @@
 import Background from "./background";
 import Genre from "./genre";
-import supabase from "../config/supabaseClient";
-import { useState, useEffect } from "react";
 
 export default function HomePage() {
   const genres = ["Shounen", "Action", "Sports", "Romance", "Fantasy"];
@@ -9,6 +7,7 @@ export default function HomePage() {
     <Genre key={genre} genre={genre} />
   ));
 
+  {/*
   const [fetchError, setFetchError] = useState(null);
   const [animes, setAnimes] = useState(null);
 
@@ -28,7 +27,7 @@ export default function HomePage() {
     };
 
     fetchAnimes();
-  }, []);
+  }, []);*/}
 
   return (
     <div>
