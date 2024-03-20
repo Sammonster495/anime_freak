@@ -19,6 +19,18 @@ app.get('/home', async (req, res) => {
     }
 })
 
+app.get('/search', async (req, res) => {
+    try {
+        const {data, error} = await supabase.rpc('random_anime')
+        if(error) throw error;
+        console.log(data)
+        res.json(data);
+    }catch(error){
+        console.log(error);
+        res.status(500).send('Server error');
+    }
+})
+
 app.listen(5000, () => {
     console.log('Server is running on port 5000');
 });

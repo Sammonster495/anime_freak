@@ -18,13 +18,13 @@ export default function Genre(props){
     }, [props.genre])
 
     return(
-        <div>
+        <>
             <h1 className="font-anta font-bold lg:text-4xl md:text-2xl sm:text-xl text-sm text-white ml-4">{props.genre}</h1>
             <div className="flex ">
                 {animes && animes.map(anime => (
                 <Card key={anime.id} anime={anime} />
                 ))}
             </div>
-        </div>
+        </>
     )
 }
