@@ -24,7 +24,7 @@ export default function Search() {
             <input type="text" placeholder="Search..." className="lg:w-[80%] md:w-[72%] sm:w-[64%] w-[56%] bg-transparent text-white focus:outline-none lg:text-4xl md:text-2xl sm:text-lg text-sm font-anta" />
             <img src="search-icon.png" alt="Filter" className="lg:h-12 md:h-9 sm:h-6 h-4 rounded-none transition-transform duration-200 ease-in-out hover:scale-110 " />
         </div>
-        <div className="absolute lg:top-40 md:top-32 sm:top-24 top-16 lg:inset-x-16 md:inset-x-14 sm:inset-x-12 inset-x-8 lg:p-5 md:p-4 sm:p-3 p-2 block justify-between rounded-xl bg-[#0000005c] opacity-75">
+        <div className="absolute lg:top-40 md:top-32 sm:top-24 top-16 lg:inset-x-16 md:inset-x-14 sm:inset-x-12 inset-x-8 lg:p-5 md:p-4 sm:p-3 p-2 justify-between rounded-xl bg-[#0000005c] opacity-75 flex flex-col gap-5">
           {randomanimes && randomanimes.map((anime) => (
             <RandomCards key={anime.id} anime={anime} />
           ))}
