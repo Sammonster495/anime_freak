@@ -23,7 +23,17 @@ app.get('/search', async (req, res) => {
     try {
         const {data, error} = await supabase.rpc('random_anime')
         if(error) throw error;
-        console.log(data)
+        res.json(data);
+    }catch(error){
+        console.log(error);
+        res.status(500).send('Server error');
+    }
+})
+
+app.get('/searchAnime', async (req, res) => {
+    try {
+        const {data, error} = await supabase.rpc('search_anime', {search: req.query.search})
+        if(error) throw error;
         res.json(data);
     }catch(error){
         console.log(error);
