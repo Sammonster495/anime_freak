@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Cards from "./cards";
+import Cards from "./Cards";
 import axios from "axios";
 import Filter from "./filter";
 import {useFilterStore} from "../store";
