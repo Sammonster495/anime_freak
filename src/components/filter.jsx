@@ -34,7 +34,7 @@ export default function Filter() {
       )}
     </div>
     <div className="grid grid-cols-2 pb-8 lg:px-12 md:px-10 sm:px-8 px-6 rounded-xl">
-      <div className="text-center justify-self-center text-white font-anta lg:text-4xl md:text-4xl sm:text2xl text-xl border-2 border-white rounded-full w-2/3">Reset</div>
+      <div className="text-center justify-self-center text-white font-anta lg:text-4xl md:text-4xl sm:text2xl text-xl border-2 border-white rounded-full w-2/3" onClick={defaultState}>Reset</div>
       <div className="text-center justify-self-center text-purple-500 font-anta lg:text-4xl md:text-4xl sm:text2xl text-xl border-2 border-purple-500 bg-white rounded-full w-2/3">Apply</div>
     </div>
     </div>
