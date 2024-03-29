@@ -5,7 +5,7 @@ import Filter from "./filter";
 import {useFilterStore} from "../store";
 
 export default function Search() {
-  const [animes, setAnimes] = useState(null);
+  const [animes, setAnimes] = useState([]);
   const [search, setSearch] = useState("");
   const {open, toggle} = useFilterStore((state) => state);
 
