@@ -52,6 +52,21 @@ app.get('/genre', async (req, res) => {
     }
 });
 
+app.get('/filter', async (req, res) => {
+    try {
+        const genresString = req.query.genres;
+        const genres = genresString ? genresString.split(',').map(Number) : [];
+        const { data, error } = await supabase.rpc('filter_anime', { genres: genres });
+        if (error) throw error;
+        res.json(data);
+    } catch (error) {
+        console.log("Error occured");
+        console.log(error);
+        res.status(500).send('Server error');
+    }
+});
+  
+
 app.listen(5000, () => {
     console.log('Server is running on port 5000');
 });

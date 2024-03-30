@@ -9,7 +9,7 @@ export const useGenreStore = create((set) => ({
   fgenre: {}, 
   defaultState: () => set(() => {
     const updatedGenre = {};
-    for (let i = 1; i <= 21; i++) {
+    for (let i = 1; i <= 22; i++) {
       updatedGenre[i] = false;
     }
     return { fgenre: updatedGenre };

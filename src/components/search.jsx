@@ -49,8 +49,9 @@ export default function Search() {
           {animes && animes.map((anime) => (
             <Cards key={anime.id} anime={anime} />
           ))}
+          {animes.length === 0 && <p className="text-white text-center lg:text-4xl md:text-3xl sm:text-2xl text-xl font-anta">No animes found!</p>}
         </div>
-        {open && <Filter /> }
+        {open && <Filter setAnimes={setAnimes} /> }
     </div>
   );
 }
