@@ -10,7 +10,7 @@ export default function Anime(){
     useEffect(() => {
         const fetchAnime = async () => {
             try{
-                const response = await axios.get(`http://localhost:5000/anime?id=${id}`)
+                const response = await axios.get(`${process.env.REACT_APP_BACKEND}/anime?id=${id}`)
                 setAnime(response.data)
             }catch(error){
                 console.log(error)
@@ -23,7 +23,7 @@ export default function Anime(){
     useEffect(() => {
         const fetchGenre = async () => {
             try {
-              const response = await axios.get(`http://localhost:5000/animeGenre?id=${id}`);
+              const response = await axios.get(`${process.env.REACT_APP_BACKEND}/animeGenre?id=${id}`);
               setGenres(response.data);
             } catch (error) {
               console.log(error);
