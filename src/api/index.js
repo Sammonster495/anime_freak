@@ -66,6 +66,28 @@ app.get('/filter', async (req, res) => {
     }
 });
   
+app.get('/anime', async (req, res) => {
+    try {
+        const {data, error} = await supabase.rpc('get_anime', {ani_id: req.query.id})
+        if(error) throw error;
+        res.json(data);
+    }catch(error){
+        console.log(error);
+        res.status(500).send('Server error');
+    }
+})
+
+app.get('/animeGenre', async (req, res) => {
+    try {
+        const {data, error} = await supabase.rpc('get_genres', {ani_id: req.query.id})
+        if(error) throw error;
+        res.json(data);
+        console.log(data);
+    }catch(error){
+        console.log(error);
+        res.status(500).send('Server error');
+    }
+})
 
 app.listen(5000, () => {
     console.log('Server is running on port 5000');
