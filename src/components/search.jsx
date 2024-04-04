@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Cards from "./Cards";
 import axios from "axios";
 import Filter from "./filter";
@@ -47,7 +48,7 @@ export default function Search() {
         </div>
         <div className="absolute lg:top-40 md:top-32 sm:top-24 top-16 lg:inset-x-16 md:inset-x-14 sm:inset-x-12 inset-x-8 lg:p-5 md:p-4 sm:p-3 p-2 justify-between rounded-xl bg-[#0000005c] opacity-75 flex flex-col gap-5">
           {animes && animes.map((anime) => (
-            <Cards key={anime.id} anime={anime} />
+            <Link key={anime.id} to={`/anime/${anime.id}`}><Cards key={anime.id} anime={anime} /></Link>
           ))}
           {animes.length === 0 && <p className="text-white text-center lg:text-4xl md:text-3xl sm:text-2xl text-xl font-anta">No animes found!</p>}
         </div>
