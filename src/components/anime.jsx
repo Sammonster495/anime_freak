@@ -84,7 +84,7 @@ export default function Anime(){
                 <p className="text-white font-anta lg:text-5xl md:text-4xl sm:text-3xl text-2xl px-2 mt-6">Content</p>
                 <div className="sm:grid grid-cols-4 my-6">
                     {content && content.map(c => (
-                        <div className="md:h-24 sm:h-20 h-12 m-2 bg-white rounded-lg grid">
+                        <div className="md:h-24 sm:h-20 h-12 m-2 bg-white rounded-lg grid" key={c.name}>
                             <a className="text-purple-700 font-anta lg:text-2xl md:text-xl sm:text-lg text-md self-center justify-self-center" href={c.link}><p className="text-center">{c.name}</p></a>
                         </div>
                     ))}
