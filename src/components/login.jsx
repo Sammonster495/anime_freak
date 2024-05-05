@@ -21,7 +21,7 @@ export default function Login(){
                 alert("Please fill all the fields");
                 throw new Error("Please fill all the fields");
             }else{
-                const response = await axios.post(`http://localhost:5000/login`, input);
+                const response = await axios.post(`${process.env.REACT_APP_BACKEND}/login`, input);
                 if(response.status !== 201){
                     alert("Login failed.Try checking your credentials.If the problem persists, try again later.");
                     throw new Error("Login failed.Try checking your credentials.If the problem persists, try again later.");
