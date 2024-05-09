@@ -5,7 +5,8 @@ import { useNavigate } from 'react-router-dom';
 export default function SignUp(){
     const navigate = useNavigate();
     const [input, setInput] = useState({
-        name: "",
+        firstname: "",
+        lastname: "",
         username: "",
         password: ""
     });
@@ -23,7 +24,7 @@ export default function SignUp(){
                 throw new Error("Please fill all the fields");
             }
             else{
-                const response = await axios.post(`${process.env.REACT_APP_BACKEND}/signup`, input);
+                const response = await axios.post(`http://localhost:5000/signup`, input);
                 if(response.status !== 201){
                     alert("Signup failed.Try again");
                     throw new Error("Signup failed.Try again");
@@ -42,14 +43,24 @@ export default function SignUp(){
     }
 
     return(
-        <div className="absolute rounded-lg sm:top-28 top-20 lg:inset-x-40 md:inset-x-32 sm:inset-x-24 inset-x-4 bg-white h-[36rem] p-7">
+        <div className="absolute rounded-lg sm:top-28 top-20 lg:inset-x-40 md:inset-x-32 sm:inset-x-24 inset-x-4 bg-white h-[42rem] p-1">
             <form className="flex flex-col" onSubmit={handleSubmit}>
-                <div className="flex flex-col p-2 m-2">
-                    <label htmlFor="name" className="text-black font-anta text-3xl px-3">Name : </label>
+                <div className="flex flex-col">
+                    <label htmlFor="name" className="text-black font-anta text-3xl px-3">First name : </label>
                     <input 
                         type="text"
-                        name="name"
-                        id="signupname"
+                        name="firstname"
+                        id="firstname"
+                        value={input.name}
+                        onChange={handleInput}
+                        className="border rounded-lg p-3 m-3 font-anta text-2xl" />
+                </div>
+                <div className="flex flex-col p-2 m-2">
+                    <label htmlFor="name" className="text-black font-anta text-3xl px-3">Last name : </label>
+                    <input 
+                        type="text"
+                        name="lastname"
+                        id="lastname"
                         value={input.name}
                         onChange={handleInput}
                         className="border rounded-lg p-3 m-3 font-anta text-2xl" />

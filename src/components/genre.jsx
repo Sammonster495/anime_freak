@@ -2,14 +2,23 @@ import axios from "axios"
 import Card from "./card"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import Cookies from "js-cookie"
 
 export default function Genre(props){
     const [animes, setAnimes] = useState(null)
+    let watch = Cookies.get('watchlist')
+    let watchlist
+    if (watch && watch.startsWith('j:')) {
+        watch = watch.substring(2);
+        watchlist = JSON.parse(watch)
+    }
 
     useEffect(() => {
         const fetchAnime = async () => {
             try{
-                const response = await axios.get(`${process.env.REACT_APP_BACKEND}/home?genre=${props.genre}`)
+                const response = await axios.get(`http://localhost:5000/home?genre=${props.genre}`, {
+                    withCredentials: true,
+                })
                 setAnimes(response.data)
             }catch(error){
                 console.log(error)
@@ -23,7 +32,7 @@ export default function Genre(props){
             <h1 className="font-anta font-bold lg:text-4xl md:text-2xl sm:text-xl text-sm text-white ml-4">{props.genre}</h1>
             <div className="flex overflow-x-auto">
                 {animes && animes.map(anime => (
-                <Link key={anime.id} to={`/anime/${anime.id}`}><Card key={anime.id} anime={anime} /></Link>
+                <Link key={anime.id} to={`/anime/${anime.id}`}><Card key={anime.id} anime={anime} watchlist={watchlist} /></Link>
                 ))}
             </div>
         </>
