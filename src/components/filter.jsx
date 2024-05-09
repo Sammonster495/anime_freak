@@ -33,7 +33,7 @@ export default function Filter({ setAnimes }) {
 
   const handleClick = useCallback(async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/filter?genres=${genre}`);
+      const response = await axios.get(`${process.env.REACT_APP_BACKEND}/filter?genres=${genre}`);
       setAnimes(response.data);
       toggle();
     } catch (error) {
