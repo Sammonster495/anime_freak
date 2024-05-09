@@ -1,6 +1,25 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Intro(){
+    const navigate = useNavigate();
+    useEffect(() => {
+        const fetchUser = async () => {
+            try{
+                const response = await axios.get(`${process.env.REACT_APP_BACKEND}/intro`, {
+                    withCredentials: true
+                })
+                if(response.data.loggedIn)
+                    navigate('/home')
+            }catch(error){
+                console.log(error)
+            }
+        }
+        fetchUser()
+    })
+
     return(
         <div className="relative w-full">
             <img src="bg-image.jpg" alt="Anime Freak" className="w-full h-[46rem] opacity-50 lg:blur-sm md:blur-[3px] sm:blur-[2px] blur-[1px]"/>

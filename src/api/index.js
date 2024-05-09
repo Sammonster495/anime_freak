@@ -42,7 +42,7 @@ app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: true, maxAge: 24 * 60 * 60 * 1000, httpOnly:false},
+    cookie: { secure: true, maxAge: 24 * 60 * 60 * 1000, httpOnly: false },
     store: store
 }));
 
@@ -81,6 +81,8 @@ app.post('/login', async (req, res) => {
         req.session.userId = user.id;
         req.session.watchlist = await getWatchlist(user.id);
         res.cookie('userId', req.session.userId, req.session.cookie)
+        res.cookie('firstname', user.first_name, req.session.cookie)
+        res.cookie('lastname', user.last_name, req.session.cookie)
         res.cookie('watchlist', req.session.watchlist, req.session.cookie)
         await req.session.save();
         res.status(201).send('Login successful');
@@ -89,6 +91,13 @@ app.post('/login', async (req, res) => {
         res.status(500).send('Server error');
     }
 });
+
+app.get('/intro', async (req, res) => {
+    if(req.session.userId)
+        res.json({loggedIn: true});
+    else
+        res.json({loggedIn: false});
+})
 
 app.get('/home', async (req, res) => {
     if(req.session.userId){
@@ -188,6 +197,17 @@ app.get('/animeCharacter', async (req, res) => {
         const {data, error} = await supabase.rpc('get_character', {ani_id: req.query.id})
         if(error) throw error;
         res.json(data);
+    }catch(error){
+        console.log(error);
+        res.status(500).send('Server error');
+    }
+})
+
+app.post('/watchlist', async (req, res) => {
+    try{
+        const {data, error} = await supabase.from('watchlist').insert([{user_id: req.session.userId, anime_id: req.query.id}])
+        if(error) throw error;
+        res.status(201).send('Added to watchlist');
     }catch(error){
         console.log(error);
         res.status(500).send('Server error');
