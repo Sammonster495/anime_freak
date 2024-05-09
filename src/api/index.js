@@ -12,7 +12,7 @@ const {createClient} = require('@supabase/supabase-js');
 const supabase = createClient(process.env.REACT_APP_SUPABASE_URL, process.env.REACT_APP_SUPABASE_KEY);
 
 app.use(cors(corsOptions = {
-    origin: 'https://anime-freak.vercel.app/',
+    origin: 'https://anime-freak.vercel.app',
     credentials: true
 }));
 app.use(cookieParser());
