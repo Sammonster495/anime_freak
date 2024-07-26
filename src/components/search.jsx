@@ -14,7 +14,7 @@ export default function Search() {
     const handleChange = () => {
       const fetchAnimes = async () => {
         try {
-          const response = await axios.get(`http://localhost:5000/searchAnime?search=${search}`);
+          const response = await axios.get(`${process.env.REACT_APP_BACKEND}/searchAnime?search=${search}`);
           setAnimes(response.data);
         } catch (error) {
           console.log(error);
