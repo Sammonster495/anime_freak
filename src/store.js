@@ -2,10 +2,6 @@ import {create} from 'zustand';
 
 export const useFilterStore = create((set) => ({
   open: false,
-  signup: false,
-  login: false,
-  signuptoggle: () => set((state) => ({ signup: !state.signup })),
-  logintoggle: () => set((state) => ({ login: !state.login })),
   toggle: () => set((state) => ({ open: !state.open })),
 }));
 
