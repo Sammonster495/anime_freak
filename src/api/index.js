@@ -12,7 +12,7 @@ const {createClient} = require('@supabase/supabase-js');
 const supabase = createClient(process.env.REACT_APP_SUPABASE_URL, process.env.REACT_APP_SUPABASE_KEY);
 
 app.use(cors(corsOptions = {
-    origin: 'https://anime-freak.onrender.com',
+    origin: 'http://localhost:3000',
     credentials: true
 }));
 app.use(cookieParser());
@@ -42,7 +42,7 @@ app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: true, maxAge: 24 * 60 * 60 * 1000, httpOnly:false},
+    cookie: { secure: false, maxAge: 24 * 60 * 60 * 1000, httpOnly:false},
     store: store
 }));
 

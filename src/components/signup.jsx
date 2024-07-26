@@ -24,7 +24,7 @@ export default function SignUp(){
                 throw new Error("Please fill all the fields");
             }
             else{
-                const response = await axios.post(`${process.env.REACT_APP_BACKEND}/signup`, input);
+                const response = await axios.post(`http://localhost:5000/signup`, input);
                 if(response.status !== 201){
                     alert("Signup failed.Try again");
                     throw new Error("Signup failed.Try again");
