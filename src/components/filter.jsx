@@ -14,7 +14,7 @@ export default function Filter({ setAnimes }) {
   useEffect(() => {
     const fetchGenre = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_BACKEND}/genre`);
+        const response = await axios.get(`http://localhost/genre`);
         setGenres(response.data);
       } catch (error) {
         console.log(error);

@@ -49,27 +49,13 @@ export default function Anime(){
     }
     , [id, charvas]);
 
-    const handleClick = async (event) => {
-        try{
-            const response = await axios.post(`${process.env.REACT_APP_BACKEND}/watchlist?id=${id}`, {
-                withCredentials: true
-            })
-            if(response.status === 201)
-                alert(response.data)
-            else
-                alert(response.data)
-        }catch(error){
-            console.log(error)
-        }
-    }
-
     return(
         <div className="lg:p-8 md:p-6 sm:p-4 p-2">
             {anime && (
                 <div className="md:flex">
                     <div className="w-full grid">
                         <div className="lg:min-w-[20rem] md:min-w-[17rem] sm:min-w-48 w-[75%] lg:min-h-[30rem] md:h-[24rem] sm:min-h-64 min-h-48 m-2 md: bg-white rounded-lg justify-self-center">
-                            <img src={anime[0].image} alt={anime[0].eng_title} className="w-full h-full" onDoubleClick={handleClick} />
+                            <img src={anime[0].image} alt={anime[0].eng_title} className="w-full h-full" />
                         </div>
                     </div>
                     <div className="lg:p-4 md:p-3 sm:p-2 p-1">

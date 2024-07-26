@@ -1,10 +1,5 @@
 import {create} from 'zustand';
 
-export const useProfileStore = create((set) => ({
-  data: null,
-  setData: (data) => set(() => ({ data: data })),
-}))
-
 export const useFilterStore = create((set) => ({
   open: false,
   toggle: () => set((state) => ({ open: !state.open })),
